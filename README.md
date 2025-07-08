@@ -1,12 +1,6 @@
-# Copilot Studio Client – Azure Functions with Entra ID Authentication
+# Calling Copilot Studio Agent via Azure Functions
 
-This solution provides an HTTP-triggered Azure Function app that interacts with Copilot Studio hosted agents, supporting secure Entra ID authentication and pass-through of bearer tokens. It is based on a conversion from a console app to a scalable, cloud-ready Azure Functions architecture.
-
----
-
-## Web UI for Testing
-
-A basic web UI is provided in the `src/frontend` folder to help with testing the API and authentication flow. This UI allows you to sign in, acquire tokens, and interact with the backend Azure Functions endpoints easily during development.
+This solution demonstrates how to call a Copilot Studio agent using Azure Functions, with a focus on secure authentication and API interaction. It includes a simple web UI for testing the API and authentication flow.
 
 ---
 
@@ -28,7 +22,6 @@ A basic web UI is provided in the `src/frontend` folder to help with testing the
 - **Web UI**: Simple frontend to test the API and authentication flow, built with vanilla JavaScript and MSAL.js for Entra ID authentication.
 - **Entra ID Authentication**: Functions require valid Entra ID bearer tokens, which are validated and securely passed through to Copilot Studio APIs.
 - **PassThroughTokenHandler**: Custom handler extracts and applies incoming bearer tokens to outgoing Copilot Studio API calls, ensuring secure, delegated access.
-- **Configuration**: All settings are managed via `local.settings.json` (for local dev) or Azure App Settings (for cloud deployment).
 
 ---
 
