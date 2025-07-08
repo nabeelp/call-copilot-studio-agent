@@ -25,6 +25,7 @@ A basic web UI is provided in the `src/frontend` folder to help with testing the
 ## Solution Overview
 
 - **Azure Functions**: HTTP-triggered endpoints for health check, starting conversations, and sending messages to Copilot Studio agents.
+- **Web UI**: Simple frontend to test the API and authentication flow, built with vanilla JavaScript and MSAL.js for Entra ID authentication.
 - **Entra ID Authentication**: Functions require valid Entra ID bearer tokens, which are validated and securely passed through to Copilot Studio APIs.
 - **PassThroughTokenHandler**: Custom handler extracts and applies incoming bearer tokens to outgoing Copilot Studio API calls, ensuring secure, delegated access.
 - **Configuration**: All settings are managed via `local.settings.json` (for local dev) or Azure App Settings (for cloud deployment).
@@ -94,29 +95,35 @@ You will need **two** app registrations in Entra ID:
 
 ---
 
-## Configuration
+## Running the Solution Locally
 
-### `local.settings.json` Example
-
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "CopilotStudioClientSettings__EnvironmentId": "Default-your-environment-id",
-    "CopilotStudioClientSettings__SchemaName": "your-copilot-schema-name",
-    "CopilotStudioClientSettings__TenantId": "your-tenant-id",
-    "CopilotStudioClientSettings__UseS2SConnection": "false",
-    "CopilotStudioClientSettings__AppClientId": "your-app-client-id",
-    "CopilotStudioClientSettings__AppClientSecret": "your-app-client-secret"
-  }
-}
-```
+1. Open a terminal in the `src/backend` folder.
+2. Restore the .NET packages:
+   ```bash
+   dotnet restore
+   ```
+3. Build the project:
+   ```bash
+   dotnet build
+   ```
+4. Start the Azure Functions runtime:
+   ```bash
+   func start
+   ```
+5. Open a new terminal in the `src/frontend` folder.
+6. Install dependencies:
+   ```bash
+   npm install
+   ```
+7. Start the frontend development server:
+   ```bash
+   npm run dev
+   ```
+8. Open your browser and navigate to `http://localhost:5173` to access the UI.
 
 ---
 
-## Endpoints
+## Function App Endpoints
 
 ### 1. Health Check
 - **GET** `/api/HealthCheck`

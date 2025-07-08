@@ -447,6 +447,9 @@ node_modules/
 jspm_packages/
 dist/
 
+# NPM lock file
+package-lock.json
+
 # Optional npm cache directory
 .npm
 
