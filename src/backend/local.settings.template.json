@@ -1,0 +1,17 @@
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "",
+        "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+        "CopilotStudioClientSettings__EnvironmentId": "Default-your-environment-id",
+        "CopilotStudioClientSettings__SchemaName": "your-copilot-schema-name",
+        "CopilotStudioClientSettings__TenantId": "your-tenant-id",
+        "CopilotStudioClientSettings__UseS2SConnection": "false",
+        "CopilotStudioClientSettings__AppClientId": "your-app-client-id",
+        "CopilotStudioClientSettings__AppClientSecret": "your-app-client-secret"
+    },
+    "Host": {
+        "CORS": "http://localhost:3000",
+        "CORS_ALLOWED_ORIGINS": "http://localhost:3000"
+    }
+}

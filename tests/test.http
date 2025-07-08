@@ -1,0 +1,29 @@
+### Test Azure Function with Entra ID Authentication
+
+# Set variables for testing
+@baseUrl = http://localhost:7071/api
+@bearerToken = {{$dotenv BEARER_TOKEN}}
+
+### Health Check (Anonymous - no token required)
+GET {{baseUrl}}/HealthCheck
+
+### Start Conversation (Requires Bearer Token)
+POST {{baseUrl}}/StartConversation
+Authorization: Bearer {{bearerToken}}
+Content-Type: application/json
+
+### Send Message (Requires Bearer Token)
+POST {{baseUrl}}/SendMessage
+Authorization: Bearer {{bearerToken}}
+Content-Type: application/json
+
+{"message":"give me a one-line description of what a devops pipeline is","onlyReturnMessages":true,"conversationId":"1234"}
+
+### Test without Bearer Token (should return 401)
+POST {{baseUrl}}/StartConversation
+Content-Type: application/json
+
+### Test with invalid Bearer Token (should return 401)
+POST {{baseUrl}}/StartConversation
+Authorization: Bearer invalid-token-here
+Content-Type: application/json

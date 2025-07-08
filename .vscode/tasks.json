@@ -1,0 +1,91 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+			   "build",
+			   "src/dotnet.sln"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Clean",
+			"type": "shell",
+			"command": "dotnet",
+			"args": [
+			   "clean",
+			   "src/dotnet.sln"
+			],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$msCompile"
+		},
+		{
+			"label": "Build and Start Azure Functions",
+			"type": "shell",
+			"command": "func",
+			"args": [
+				"start",
+				"--csharp",
+			   "--build",
+			   "src/dotnet.sln",
+			   "--verbose"
+			],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$func-dotnet-watch"
+			],
+			"dependsOn": "Build"
+		},
+		{
+			"label": "Start Azure Functions (No Build)",
+			"type": "shell",
+			"command": "func",
+			"args": [
+				"start",
+				"--csharp",
+				"--verbose"
+			],
+			"group": "build",
+			"isBackground": true,
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$func-dotnet-watch"
+			]
+		},
+		{
+			"label": "Install Azure Functions Core Tools",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"install",
+				"-g",
+				"azure-functions-core-tools@4",
+				"--unsafe-perm",
+				"true"
+			],
+			"group": "build",
+			"options": {
+				"cwd": "${workspaceFolder}"
+			}
+		}
+	]
+}
