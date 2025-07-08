@@ -3,10 +3,10 @@
 
 // Configuration - Loaded from environment variables (see .env file, not committed to git)
 const CONFIG = {
-    CLIENT_ID: import.meta.env.CLIENT_ID,
-    TENANT_ID: import.meta.env.TENANT_ID,
-    API_BASE_URL: import.meta.env.API_BASE_URL,
-    API_SCOPE: import.meta.env.API_SCOPE
+    CLIENT_ID: import.meta.env.VITE_CLIENT_ID,
+    TENANT_ID: import.meta.env.VITE_TENANT_ID,
+    API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
+    API_SCOPE: import.meta.env.VITE_API_SCOPE
 };
 
 const msalConfig = {
